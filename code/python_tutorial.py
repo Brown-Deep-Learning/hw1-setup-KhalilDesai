@@ -1,5 +1,5 @@
 """
-These are the classed you need to implement. Read the tutorial in the Section 3 - Python Review and follow the instructions in it to
+These are the classes you need to implement. Read the tutorial in the Section 3 - Python Review and follow the instructions in it to
 implement the classes below. 
 """
 class Square:
@@ -12,9 +12,10 @@ class Square:
     Returns:
         None
     """
-    def __init__(self):
-        pass
-
+    def __init__(self, name : str, length : float) -> None:
+        # save both as instance variables
+        self.name = name
+        self.length = length
 
 class Multiplier:
     """
@@ -22,7 +23,7 @@ class Multiplier:
     Args:
         None
     """
-    def __call__(self):
+    def __call__(self, num1 : int, num2 : int) -> int:
         """
         Implement the __call__ method here
         Args:
@@ -32,10 +33,11 @@ class Multiplier:
         Returns:
             result (int): The result of the multiplication
         """
-        pass
+        return num1 * num2
 
 
 class LoggingTape:
+    logging_tape = None
     """
     LoggingTape class to record the logs
     """
@@ -43,25 +45,26 @@ class LoggingTape:
         """
         Initialize variables
         """
-        self.logs = ...
+        self.logs = []
 
     def __enter__(self):
         """
         Called when entering the context
         """
-        pass
+        Logger.logging_tape = self
+        return self
 
     def __exit__(self, *args):
         """
         Called when exiting the context
         """
-        pass
+        Logger.logging_tape = None
 
     def add_to_log(self, new_log):
         """
         Add a new log to the logs
         """
-        pass
+        self.logs.append(new_log)
 
     def print_logs(self):
         """
